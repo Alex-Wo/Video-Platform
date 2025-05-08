@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+{% endblock style %}
+
+{% block content %}
+<div class="mainBody">
+    {% include 'partials/sidebar.html' %}
+    <div class="videos">
+        <div>
+        </div>
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="upload-content">
+                <div class="left-video">
+                    <h4>Подробности</h4>
+                    <div class="error">
+                        <strong>{{ form.errors }}</strong>
+                    </div>
+                    <div class="desc-div">
+                        <span>Описание (обязательно)<span id="desc-count"></span> </span> <br>
+                        {{ form.content }}
+                    </div>
+                    <div class="video-div file-input" id="file-input">
+                        <small>Превью (обязательно)</small> <br>
+                        {{ form.image }}
+                        <span class='button'><i class="material-icons">image</i></span>
+                        <span class='label' data-js-label>Фото не выбрано</label>
+                    </div>
+                    <div class="upload-btn-div">
+                        <button type="submit" class="upload-btn">Опубликовать</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}
